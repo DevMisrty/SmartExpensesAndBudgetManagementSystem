@@ -26,6 +26,12 @@ public class Expenses {
 
     private String description;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Users users;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Category category;
+
     @CreatedDate
     private LocalDate date;
 }

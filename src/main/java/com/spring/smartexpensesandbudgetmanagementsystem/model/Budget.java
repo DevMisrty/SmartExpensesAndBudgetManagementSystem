@@ -22,6 +22,9 @@ public class Budget {
     private Double amountLimit;
     private LocalDate endDate;
 
+    @ManyToOne
+    private Users users;
+
     @CreatedDate
     private LocalDate createdAt;
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -26,6 +27,12 @@ public class Users {
     private String password;
 
     private String role;
+
+    @OneToMany(mappedBy ="users")
+    private List<Expenses> expensesList;
+
+    @OneToMany(mappedBy = "users")
+    private List<Budget> budgetList;
 
     @CreatedDate
     private LocalDate createdAt;
