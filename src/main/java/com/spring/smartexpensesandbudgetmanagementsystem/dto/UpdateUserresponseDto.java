@@ -5,12 +5,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor @AllArgsConstructor
-@Builder
-public class SignInRequestDto {
+import java.time.LocalDate;
 
+@Data
+@AllArgsConstructor @NoArgsConstructor
+@Builder
+public class UpdateUserresponseDto {
+
+    private Long id;
     private String username;
-    private String password;
     private String userDescription;
+    private LocalDate createdBy;
+    private String messgae;
 }
