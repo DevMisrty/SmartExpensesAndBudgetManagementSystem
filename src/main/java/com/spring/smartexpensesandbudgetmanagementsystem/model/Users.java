@@ -28,6 +28,8 @@ public class Users {
 
     private String role;
 
+    private String userDescription;
+
     @OneToMany(mappedBy ="users")
     private List<Expenses> expensesList;
 
