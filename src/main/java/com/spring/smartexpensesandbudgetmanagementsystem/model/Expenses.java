@@ -5,14 +5,18 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor @AllArgsConstructor
 @Builder
+@EntityListeners(AuditingEntityListener.class)
 @Entity
+@ToString(exclude = {"users", "category"})
 public class Expenses {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +33,7 @@ public class Expenses {
     @ManyToOne(fetch = FetchType.EAGER)
     private Users users;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private Category category;
 
     @CreatedDate

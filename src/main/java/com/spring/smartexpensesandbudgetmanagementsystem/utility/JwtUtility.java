@@ -22,7 +22,7 @@ public class JwtUtility {
                 .setSubject(users.getUsername())
                 .claim("role",users.getRole())
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 10))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 1000))
                 .signWith(getKey())
                 .compact();
     }

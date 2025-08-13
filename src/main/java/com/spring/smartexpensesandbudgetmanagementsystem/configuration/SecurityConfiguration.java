@@ -27,8 +27,10 @@ public class SecurityConfiguration {
                         auth
                                 .requestMatchers("/home").permitAll()
                                 .requestMatchers("/auth/**").permitAll()
+                                .requestMatchers("/swagger-ui/index.html").permitAll()
                                 .requestMatchers("/users/**").authenticated()
                                 .requestMatchers("/admin/**").hasRole("admin")
+                                .anyRequest().authenticated()
                 ))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .formLogin(AbstractHttpConfigurer::disable)
